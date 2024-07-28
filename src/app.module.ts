@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
-import { Users } from './users/entities';
+import { Profile, Users } from './users/entities';
 
 @Module({
   imports: [
@@ -12,7 +12,7 @@ import { Users } from './users/entities';
       username: 'root',
       password: 'P@ssword2024',
       database: 'ava_ns_typeorm',
-      entities: [Users],
+      entities: [Users, Profile],
       synchronize: true,
     }),
     UsersModule,
