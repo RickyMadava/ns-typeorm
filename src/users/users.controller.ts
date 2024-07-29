@@ -12,6 +12,7 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/users.create.dto';
 import { UpdateUserDto } from './dto/users.update.dto';
 import { ProfileCreateDto } from './dto/profile.create.dto';
+import { CreatePostDto } from './dto/post.create.dto';
 
 @Controller('users')
 export class UsersController {
@@ -51,5 +52,13 @@ export class UsersController {
     @Body() profileCreateDto: ProfileCreateDto,
   ) {
     return await this.usersService.createProfile(id, profileCreateDto);
+  }
+
+  @Post(':id/posts')
+  async createPost(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() postCreateDto: CreatePostDto,
+  ) {
+    return await this.usersService.createPost(id, postCreateDto);
   }
 }
